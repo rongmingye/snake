@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+	<script src="./js/jquery-3.3.1.js"></script>
+	<link rel="stylesheet" href="./css/reset.css" />
+	<link rel="stylesheet" href="./css/snake.css" />
+	<script src="./js/snake.js"></script>
+</head>
+<body>
+	<div class="container">
+		<!-- 左侧 -->
+		<div class="left-side">
+			<h3 class="sum">当前分数: <span id="sum">0</span></h3>
+		</div>
+		
+		<!-- 中间 -->
+		<div class="main">
+			
+			<!-- 控件 -->
+			<div class="ctrl">
+				<button id="stopId">暂停</button>
+				<button id="startId">开始</button>
+				<button id="freshId">刷新</button>
+				<button id="speedId">加速</button>
+			</div>
+			<!-- 速度进度条 -->
+			<div class="line">
+				<div class="line-bar"></div>
+			</div>
+
+			<!-- 地图 -->
+			<div class="map"> </div>
+
+		</div><!-- 中间结束 -->
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+思路
+	1  	地图
+	2  	snake的每个元素是一个坐标
+	3	远动： 第一个元素根据方向加一，其他元素返回上一元素的位置
+	4  	吃掉一个egg:  
+		 	a  snake的长度加一，添加最后一个元素的位置
+			b  重新放鸡蛋
+			c  加速度 定时器加快
+	5	结束： 碰到上下左右边界和snake身体
+	6 	按键控制运动方向
+	7 	控件功能： 暂停 开始 刷新 加速
+
+
+html 结构
+css 样式
+js 动作
+
+快捷方式
+	 ctrl+e / ! + tab 补全代码结构
+	 ctrl+shift+D 整行复制
+	 标签名+tab  补全标签
+	 bg+tab  快捷背景
+
+进度条
+地图
+
+交集选择器： 同一个元素的有两个以上的类 ps: .col.activeCol
+浮动/定位： 脱离文档流
+
+css 
+	outline: color width solid 常用于表单
+	font-family: '微软雅黑'
+	盒子模型 margin border padding  content
+  	box-sizing
+
+数据类型
+	值类型	普通赋值
+	ps:
+		var curElem;
+		var snake = [ [0,1] ];
+		for(var i=0; i<snake.length; i++){
+		    curElem = snake[0][1];  // 赋值一个值
+		    if(i === 0){
+		        console.log(curElem);
+		        snake[0][1]++;
+		        console.log(curElem);
+		    }
+		}
+
+	引用类型  array function object
+	ps:
+		var curElem;
+		var snake = [ [0,1] ];
+		for(var i=0; i<snake.length; i++){
+		    curElem = snake[0]; // 赋值一个数组的地址
+		    if(i === 0){
+		        console.log(curElem);
+		        snake[0][1]++;
+		        console.log(curElem);
+		    }
+		}
+
+	jquery数组下标选择器:
+		标签内 :eq()
+		标签外 .eq()
+
+	translate translateX translateY  居中
+
