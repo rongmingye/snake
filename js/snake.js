@@ -48,12 +48,15 @@ $(function(){
 
 //  ----------------------------------------- 地图 -----------------------
 	//  画地图
+	$(".map").css("height", $(".map").css("width") );
 	var col = "<sapn class='col'></sapn>";
 	var row = "<div class='row'></div>";
-	var rowNum = 26;
-	var colNum = 26;
-	$(".map").css('width', rowNum*20+"px");
-	$(".map").css('height', colNum*20+"px");
+	var rowNum = Math.floor($(".map").css("width").replace("px", "") / 20);
+	var colNum = Math.floor($(".map").css("height").replace("px", "") / 20);
+	
+
+	// $(".map").css('width', rowNum*20+"px");
+	// $(".map").css('height', colNum*20+"px");
 	
 	for(var i=0; i< rowNum; i++){
 		$('.map').html( $('.map').html()+row );
@@ -169,7 +172,7 @@ $(function(){
 		// 五种结束游戏， 上下左右和碰到自己的身体
 		// 往右
 		if(changeState == "right"){
-			if(snake[0][1] > 25)
+			if(snake[0][1] > colNum-1)
 				 theEnd = true;
 		}
 		// 往左
@@ -184,7 +187,7 @@ $(function(){
 		}
 		// 往下
 		else if(changeState == "bottom"){
-			if(snake[0][0] > 25)
+			if(snake[0][0] > rowNum-1 )
 				theEnd = true;
 		}
 
@@ -218,4 +221,51 @@ $(function(){
 		// 根据snake重新渲染蛇的身体
 		snakeDody();
 	}
+
+
+	// 当按键按下
+	onkeyHandleModlie();
+	function onkeyHandleModlie(){
+		if(!theEnd){
+			$("#goTop").click(function(){
+				oldState = changeState;
+				if(oldState != "bottom" && oldState != "top"){
+		       		changeState = "top";
+		       		clearInterval(timer);
+			     	changeItem();
+			     	if(!theEnd) timer = setInterval(changeItem, speed);
+
+		       	}
+			});
+			$("#goBottom").click(function(){
+				oldState = changeState;
+				if(oldState != "top" && oldState != "bottom"){
+		      		changeState = "bottom" ;
+		      		clearInterval(timer);
+			     	changeItem();
+			     	if(!theEnd) timer = setInterval(changeItem, speed);
+		      	}
+			});
+			$("#goLeft").click(function(){
+				oldState = changeState;
+				if(oldState != "right" && oldState != "left"){
+				     	changeState = "left";
+				     	clearInterval(timer);
+				     	changeItem();
+				     	if(!theEnd) timer = setInterval(changeItem, speed);
+				}
+			});
+			$("#goRight").click(function(){
+				oldState = changeState;
+				if(oldState != "right" && oldState != "left"){
+					     	changeState = "right";
+					     	clearInterval(timer);
+					     	changeItem();
+					     	if(!theEnd) timer = setInterval(changeItem, speed);
+				}
+			});
+
+		}
+	}
+		
 });
