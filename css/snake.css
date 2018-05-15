@@ -184,5 +184,8 @@ html, body{
 	line-height: 30px;
 	text-align: center;
 }
+.foot button img{
+	vertical-align: middle;
+}
 
 }
