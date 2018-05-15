@@ -1,4 +1,5 @@
 $(function(){
+
 	var snake = [ [0,3], [0,2], [0,1], [0,0] ];
 	var timer = null; // 定时器
 	var changeState = "right"; // 当前前进方向
@@ -8,7 +9,7 @@ $(function(){
 	var knock = false;  // 是否碰到鸡蛋
 	var speed = 200; // 蛇的行走速度
 	var endAlert = 150; // 结束后多久提示结束
-	var theEnd = false;  // 确定是否结束 false/true
+	var theEnd = true;  // 确定是否结束 false/true
 
 // -------------------------------   控件 --------------------------------
 	// 控制
@@ -18,6 +19,8 @@ $(function(){
 		}
 	});
 	$("#startId").click(function(e){
+		theEnd = false;
+		onkeyHandleModlie(); 
 		if(!theEnd){
 			timer = setInterval(changeItem, speed);
 		}
@@ -32,6 +35,8 @@ $(function(){
 		changeState = "right"; // 当前前进方向
 		oldState = "right"; // 上一前进方向
 		$("#sum").text(0);
+		speed = 200;
+		addSpeed();
 	});
 	$("#speedId").click(function(e){
 		addSpeed();
@@ -53,6 +58,8 @@ $(function(){
 	var row = "<div class='row'></div>";
 	var rowNum = Math.floor($(".map").css("width").replace("px", "") / 20);
 	var colNum = Math.floor($(".map").css("height").replace("px", "") / 20);
+	$(".map").css("width", 20*rowNum+"px" );
+	$(".map").css("height", 20*colNum+"px" );
 	
 
 	// $(".map").css('width', rowNum*20+"px");
@@ -230,11 +237,10 @@ $(function(){
 			$("#goTop").click(function(){
 				oldState = changeState;
 				if(oldState != "bottom" && oldState != "top"){
-		       		changeState = "top";
-		       		clearInterval(timer);
-			     	changeItem();
-			     	if(!theEnd) timer = setInterval(changeItem, speed);
-
+	       		changeState = "top";
+	       		clearInterval(timer);
+		     	changeItem();
+		     	if(!theEnd) timer = setInterval(changeItem, speed);
 		       	}
 			});
 			$("#goBottom").click(function(){
@@ -249,22 +255,21 @@ $(function(){
 			$("#goLeft").click(function(){
 				oldState = changeState;
 				if(oldState != "right" && oldState != "left"){
-				     	changeState = "left";
-				     	clearInterval(timer);
-				     	changeItem();
-				     	if(!theEnd) timer = setInterval(changeItem, speed);
+			     	changeState = "left";
+			     	clearInterval(timer);
+			     	changeItem();
+			     	if(!theEnd) timer = setInterval(changeItem, speed);
 				}
 			});
 			$("#goRight").click(function(){
 				oldState = changeState;
 				if(oldState != "right" && oldState != "left"){
-					     	changeState = "right";
-					     	clearInterval(timer);
-					     	changeItem();
-					     	if(!theEnd) timer = setInterval(changeItem, speed);
+			     	changeState = "right";
+			     	clearInterval(timer);
+			     	changeItem();
+			     	if(!theEnd) timer = setInterval(changeItem, speed);
 				}
 			});
-
 		}
 	}
 		
